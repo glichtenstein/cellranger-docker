@@ -11,8 +11,13 @@ FROM centos:latest
 # File Author / Maintainer
 MAINTAINER Gabriel Lichtenstein <gabriel.lichtenstein@gmail.com>
 
+# To migrate from CentOS 8 to CentOS Stream 8, run the following commands:
+dnf --disablerepo '*' --enablerepo=extras swap centos-linux-repos centos-stream-repos
+dnf distro-sync
+
+
 # Install some utilities
-RUN yum install -y \
+RUN dnf install -y \
 	file \
 	git \
 	sssd-client \
